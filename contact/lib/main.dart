@@ -7,7 +7,13 @@ void main() {
   ));
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int age = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +24,18 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
       ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState((){
+            age++;
+          });
+        },
+        child: Icon(Icons.add), // The icon displayed in the FAB
+        backgroundColor: Colors.amber, // The background color of the FAB
+      ),
+
+
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0),
         child: Column(
@@ -48,6 +66,23 @@ class Home extends StatelessWidget {
                   letterSpacing: 2.0,
                 fontSize: 25.0,
                 fontWeight: FontWeight.bold
+              ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Text("Age",
+              style: TextStyle(
+                  color: Colors.grey,
+                  letterSpacing: 2.0
+              ),
+            ),
+            Text("$age",
+              style: TextStyle(
+                  color: Colors.amber,
+                  letterSpacing: 2.0,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold
               ),
             ),
             SizedBox(
@@ -100,6 +135,7 @@ class Home extends StatelessWidget {
 
         ),
       ),
+
     );
   }
 }
